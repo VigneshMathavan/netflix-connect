@@ -7,11 +7,11 @@ import { SUBSCRIPTIONS } from '../data/mockData';
 import './Navbar.css';
 
 const NAV_ITEMS = [
-  { id: 'home',      label: 'Home',         icon: '🏠' },
-  { id: 'friends',   label: 'Friends',      icon: '👥' },
-  { id: 'creator',   label: 'Creator Hub',  icon: '🎬' },
-  { id: 'dashboard', label: 'Live Stats',   icon: '📊' },
-  { id: 'payment',   label: 'Upgrade',      icon: '⭐' },
+  { id: 'home',      label: 'Home' },
+  { id: 'friends',   label: 'Friends' },
+  { id: 'creator',   label: 'Creator Hub' },
+  { id: 'dashboard', label: 'Live Stats' },
+  { id: 'payment',   label: 'Upgrade' },
 ];
 
 export default function Navbar() {
@@ -46,10 +46,9 @@ export default function Navbar() {
             className={`nav-link ${view === item.id ? 'active' : ''}`}
             onClick={() => navigate(item.id)}
           >
-            <span className="nav-icon">{item.icon}</span>
             <span>{item.label}</span>
             {item.id === 'payment' && user?.subscription !== 'premium_plus' && (
-              <span className="nav-badge">✦</span>
+              <span className="nav-badge">PRO</span>
             )}
           </button>
         ))}
@@ -80,9 +79,9 @@ export default function Navbar() {
               </div>
             </div>
             <hr className="divider" />
-            <button className="profile-menu-item" onClick={() => navigate('payment')}>⭐ Upgrade Plan</button>
-            <button className="profile-menu-item" onClick={() => navigate('friends')}>👥 Friends</button>
-            <button className="profile-menu-item danger" onClick={logout}>🚪 Sign Out</button>
+            <button className="profile-menu-item" onClick={() => navigate('payment')}>Upgrade Plan</button>
+            <button className="profile-menu-item" onClick={() => navigate('friends')}>Friends</button>
+            <button className="profile-menu-item danger" onClick={logout}>Sign Out</button>
           </div>
         )}
       </div>

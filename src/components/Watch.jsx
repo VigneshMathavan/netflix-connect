@@ -82,7 +82,7 @@ export default function WatchScreen() {
         <button
           className="btn btn-ghost btn-sm"
           onClick={() => dispatch({ type: 'SET_VIEW', payload: 'home' })}
-        >← Back</button>
+        >Back</button>
         <div className="watch-room-info">
           {activeRoom.isLive && <span className="tag tag-red"><div className="live-dot" /> LIVE</span>}
           <span className="watch-room-name">{activeRoom.name}</span>
@@ -99,8 +99,8 @@ export default function WatchScreen() {
           <button
             className="btn btn-ghost btn-sm"
             onClick={() => dispatch({ type: 'SET_INVITE_MODAL', payload: true })}
-          >➕ Invite</button>
-          <button className="btn btn-ghost btn-sm" onClick={() => setShowSettings(v => !v)}>⚙️</button>
+          >Invite</button>
+          <button className="btn btn-ghost btn-sm" onClick={() => setShowSettings(v => !v)}>Settings</button>
         </div>
       </div>
 
@@ -119,7 +119,7 @@ export default function WatchScreen() {
                 </div>
               ))}
               {/* Center play icon on toggle */}
-              <div className={`play-flash ${playback.isPlaying ? 'hide' : 'show'}`}>▶</div>
+              <div className={`play-flash ${playback.isPlaying ? 'hide' : 'show'}`}>PLAY</div>
             </div>
 
             {/* Controls */}
@@ -135,11 +135,11 @@ export default function WatchScreen() {
               <div className="controls-row">
                 <div className="controls-left">
                   <button className="ctrl-btn" onClick={togglePlay}>
-                    {playback.isPlaying ? '⏸' : '▶'}
+                    {playback.isPlaying ? 'PAUSE' : 'PLAY'}
                   </button>
-                  <button className="ctrl-btn">⏭</button>
+                  <button className="ctrl-btn">NEXT</button>
                   <div className="volume-ctrl">
-                    <span>🔊</span>
+                    <span>VOL</span>
                     <input
                       type="range" min="0" max="100"
                       value={personalSettings.volume}
@@ -155,11 +155,11 @@ export default function WatchScreen() {
                 <div className="controls-right">
                   {playback.lastSyncedBy && (
                     <span className="sync-indicator">
-                      🔗 Synced with {MOCK_USERS.find(u => u.id === playback.lastSyncedBy)?.name?.split(' ')[0]}
+                      Synced with {MOCK_USERS.find(u => u.id === playback.lastSyncedBy)?.name?.split(' ')[0]}
                     </span>
                   )}
-                  <button className="ctrl-btn" onClick={() => setShowSettings(v => !v)}>⚙️</button>
-                  <button className="ctrl-btn">⛶</button>
+                  <button className="ctrl-btn" onClick={() => setShowSettings(v => !v)}>SET</button>
+                  <button className="ctrl-btn">FULL</button>
                 </div>
               </div>
             </div>
@@ -167,7 +167,7 @@ export default function WatchScreen() {
 
           {/* AI Insight strip */}
           <div className="watch-insight">
-            <span>{currentInsight.icon}</span>
+            <span>INSIGHT:</span>
             <span>{currentInsight.text}</span>
           </div>
 
@@ -186,7 +186,7 @@ export default function WatchScreen() {
         {/* CHAT PANEL */}
         <div className="chat-panel">
           <div className="chat-header">
-            <span className="chat-title">💬 Live Chat</span>
+            <span className="chat-title">Live Chat</span>
             <div style={{display:'flex',gap:8,alignItems:'center'}}>
               <div className="live-dot" />
               <span style={{fontSize:'0.75rem',color:'var(--text-muted)'}}>Live</span>
@@ -234,7 +234,7 @@ export default function WatchScreen() {
                 onChange={e => setChatInput(e.target.value)}
                 placeholder="Say something…"
               />
-              <button type="submit" className="btn btn-primary btn-sm" disabled={!chatInput.trim()}>→</button>
+              <button type="submit" className="btn btn-primary btn-sm" disabled={!chatInput.trim()}>SEND</button>
             </div>
           </form>
         </div>
@@ -244,11 +244,11 @@ export default function WatchScreen() {
       {showSettings && (
         <div className="settings-panel animate-slide-right">
           <div className="settings-header">
-            <span>⚙️ Your Settings</span>
-            <button className="btn btn-ghost btn-sm" onClick={() => setShowSettings(false)}>✕</button>
+            <span>Your Settings</span>
+            <button className="btn btn-ghost btn-sm" onClick={() => setShowSettings(false)}>CLOSE</button>
           </div>
           <div className="settings-notice">
-            🎧 Audio and subtitle settings are personal to your device and do not affect other viewers.
+            Audio and subtitle settings are personal to your device and do not affect other viewers.
           </div>
           <div className="setting-group">
             <label className="form-label">Audio Language</label>
@@ -290,8 +290,8 @@ export default function WatchScreen() {
       {showParticipants && (
         <div className="participants-panel animate-slide-right">
           <div className="settings-header">
-            <span>👥 Room Participants</span>
-            <button className="btn btn-ghost btn-sm" onClick={() => setShowParticipants(false)}>✕</button>
+            <span>Room Participants</span>
+            <button className="btn btn-ghost btn-sm" onClick={() => setShowParticipants(false)}>CLOSE</button>
           </div>
           {participants.map(p => (
             <div key={p.id} className="participant-row">
@@ -302,7 +302,7 @@ export default function WatchScreen() {
               <div style={{flex:1}}>
                 <div style={{fontWeight:600,fontSize:'0.875rem'}}>{p.name}</div>
                 <div style={{fontSize:'0.72rem',color:'var(--text-muted)'}}>
-                  {p.id === activeRoom.hostId ? '👑 Host' : 'Viewer'}
+                  {p.id === activeRoom.hostId ? 'Host' : 'Viewer'}
                 </div>
               </div>
               <div className="live-dot-green" />

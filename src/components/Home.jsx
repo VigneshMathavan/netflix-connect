@@ -24,7 +24,7 @@ function FriendSocialLabel({ movie }) {
   );
   if (fh > 0) return (
     <div className="friend-social-label watched">
-      <span>👥 {fh} friend{fh > 1 ? 's' : ''} watched this</span>
+      <span>{fh} friend{fh > 1 ? 's' : ''} watched this</span>
     </div>
   );
   return null;
@@ -76,9 +76,9 @@ export default function HomeScreen() {
 
   // Rows driven entirely by TMDB data
   const ROWS = [
-    { id: 'trending',  label: '🔥 Trending Now',          movies: tmdbContent.trending },
-    { id: 'rec',       label: '✨ Recommended For You',    movies: tmdbContent.popular },
-    { id: 'friends',   label: '👥 Watch with Friends',     movies: tmdbContent.tv },
+    { id: 'trending',  label: 'Trending Now',          movies: tmdbContent.trending },
+    { id: 'rec',       label: 'Recommended For You',    movies: tmdbContent.popular },
+    { id: 'friends',   label: 'Watch with Friends',     movies: tmdbContent.tv },
   ];
 
   // Friends watching right now (from online friends)
@@ -98,7 +98,7 @@ export default function HomeScreen() {
               <div className="live-dot" /> OFFICIAL EVENT
             </span>
             {heroMovie.rating > 0 && (
-              <span className="tag tag-gold">⭐ {heroMovie.rating}/10</span>
+              <span className="tag tag-gold">RATING {heroMovie.rating}/10</span>
             )}
           </div>
           <h1 className="hero-title">{heroMovie.title}</h1>
@@ -116,10 +116,10 @@ export default function HomeScreen() {
           </div>
           <div className="hero-actions">
             <button className="btn btn-primary btn-xl" onClick={() => watchMovie(heroMovie)}>
-              ▶ Watch Now
+              Watch Now
             </button>
             <button className="btn btn-glass btn-xl" onClick={createRoom}>
-              👥 Invite Friends
+              Invite Friends
             </button>
           </div>
           <div className="hero-room-info">
@@ -178,7 +178,7 @@ export default function HomeScreen() {
           {/* ---- Official Events (only public rooms) ---- */}
           <section className="content-row">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-              <h2 className="row-title">🔴 Official Events</h2>
+              <h2 className="row-title">Official Events</h2>
               <span className="tag tag-red" style={{ fontSize: '0.72rem' }}>Netflix Exclusive</span>
             </div>
             <div className="rooms-grid">
@@ -198,10 +198,9 @@ export default function HomeScreen() {
 
           {/* ---- Friends Watching Now ---- */}
           <section className="content-row">
-            <h2 className="row-title">👥 Friends Watching Now</h2>
+            <h2 className="row-title">Friends Watching Now</h2>
             {friendsWatching.length === 0 ? (
               <div className="empty-state" style={{ padding: '24px 0' }}>
-                <div style={{ fontSize: '2rem' }}>🎬</div>
                 <div>None of your friends are watching right now</div>
                 <button
                   className="btn btn-ghost btn-sm"
@@ -229,7 +228,7 @@ export default function HomeScreen() {
           {/* Friends Online */}
           <div className="sidebar-card">
             <div className="sidebar-card-header">
-              <span>👥 Friends Online</span>
+              <span>Friends Online</span>
               <span className="tag tag-green">{state.onlineFriends.length} online</span>
             </div>
             {state.onlineFriends.map(f => (
@@ -258,7 +257,7 @@ export default function HomeScreen() {
           {/* Recently watched with friends */}
           <div className="sidebar-card">
             <div className="sidebar-card-header">
-              <span>🕑 Recently With Friends</span>
+              <span>Recently With Friends</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {(tmdbContent.trending.slice(0, 3)).map((m, i) => (
@@ -278,7 +277,7 @@ export default function HomeScreen() {
           {/* Activity Feed */}
           <div className="sidebar-card">
             <div className="sidebar-card-header">
-              <span>⚡ Friends Activity</span>
+              <span>Friends Activity</span>
               <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
                 <div className="live-dot" />
                 <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Live</span>
@@ -301,7 +300,6 @@ export default function HomeScreen() {
 
           {/* Invite CTA */}
           <div className="sidebar-card invite-cta-card">
-            <div style={{ fontSize: '1.5rem', marginBottom: 8 }}>🔒</div>
             <div style={{ fontWeight: 700, marginBottom: 4 }}>Private Watch Rooms</div>
             <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: 12 }}>
               Your rooms are invite-only. Only friends can join.
@@ -330,8 +328,8 @@ function MovieCard({ movie, isHovered, onHover, onLeave, onWatch, onParty }) {
       <div className="movie-thumb-wrap">
         <img src={movie.thumbnail} alt={movie.title} className="movie-thumb" loading="lazy" />
         <div className="movie-thumb-overlay">
-          <button className="movie-play-btn" onClick={onWatch}>▶</button>
-          <button className="movie-party-btn" onClick={onParty}>👥</button>
+          <button className="movie-play-btn" onClick={onWatch}>Play</button>
+          <button className="movie-party-btn" onClick={onParty}>Invite</button>
         </div>
         {/* Friend social badge — replaces "X rooms" */}
         <FriendSocialLabel movie={movie} />
@@ -339,7 +337,7 @@ function MovieCard({ movie, isHovered, onHover, onLeave, onWatch, onParty }) {
       <div className="movie-info">
         <div className="movie-title-sm">{movie.title}</div>
         <div className="movie-meta-sm">
-          {movie.rating > 0 && <span>⭐ {movie.rating}</span>}
+          {movie.rating > 0 && <span>Rating {movie.rating}</span>}
           <span>{movie.year}</span>
           <span>{movie.duration}</span>
         </div>
@@ -360,7 +358,7 @@ function OfficialEventCard({ event, movie, onJoin }) {
         />
         <div className="room-card-overlay">
           <span className="tag tag-gold" style={{ fontSize: '0.65rem', fontWeight: 700 }}>
-            ★ Official Event
+            Official Event
           </span>
           {event.isLive && (
             <span className="tag tag-red" style={{ fontSize: '0.7rem' }}>
@@ -380,7 +378,7 @@ function OfficialEventCard({ event, movie, onJoin }) {
         </div>
         <div className="room-participants">
           <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-            🔥 {event.reactionCount.toLocaleString()} reactions
+            {event.reactionCount.toLocaleString()} reactions
           </span>
         </div>
         <button className="btn btn-primary btn-sm" style={{ width: '100%', marginTop: 8 }}>
@@ -403,7 +401,7 @@ function FriendWatchingCard({ friend, movie, onInvite }) {
         <div style={{ fontWeight: 700, fontSize: '0.875rem' }}>{friend.name}</div>
         {movie ? (
           <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-            🎬 {movie.title}
+            Watching: {movie.title}
           </div>
         ) : (
           <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Browsing…</div>

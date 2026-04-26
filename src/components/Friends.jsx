@@ -19,28 +19,28 @@ export default function FriendsScreen() {
 
   const inviteToWatch = (friend) => {
     dispatch({ type: 'SET_INVITE_MODAL', payload: true });
-    dispatch({ type: 'SET_TOAST', payload: { msg: `Invitation sent to ${friend.name}! 📨`, type: 'success' } });
+    dispatch({ type: 'SET_TOAST', payload: { msg: `Invitation sent to ${friend.name}!`, type: 'success' } });
   };
 
   const addFriend = (e) => {
     e.preventDefault();
-    dispatch({ type: 'SET_TOAST', payload: { msg: `Friend request sent to ${addEmail}! ✉️`, type: 'success' } });
+    dispatch({ type: 'SET_TOAST', payload: { msg: `Friend request sent to ${addEmail}!`, type: 'success' } });
     setAddEmail('');
   };
 
   return (
     <div className="friends-container">
       <div className="friends-header animate-fade">
-        <h1 className="friends-title">👥 Friends & Social</h1>
+        <h1 className="friends-title">Friends & Social</h1>
         <p className="friends-subtitle">Connect with friends and watch together</p>
       </div>
 
       {/* Tabs */}
       <div className="friends-tabs">
         {[
-          { id: 'friends', label: '👥 My Friends', count: myFriends.length },
-          { id: 'discover', label: '🔍 Discover People' },
-          { id: 'activity', label: '⚡ Activity Feed', count: activityFeed.length },
+          { id: 'friends', label: 'My Friends', count: myFriends.length },
+          { id: 'discover', label: 'Discover People' },
+          { id: 'activity', label: 'Activity Feed', count: activityFeed.length },
         ].map(t => (
           <button key={t.id} className={`friends-tab ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
             {t.label}
@@ -52,7 +52,7 @@ export default function FriendsScreen() {
       {tab === 'friends' && (
         <div className="friends-content animate-fade">
           <div className="friends-toolbar">
-            <input className="input" placeholder="🔍 Search friends…" value={search} onChange={e => setSearch(e.target.value)} style={{maxWidth:320}} />
+            <input className="input" placeholder="Search friends…" value={search} onChange={e => setSearch(e.target.value)} style={{maxWidth:320}} />
             <form onSubmit={addFriend} style={{display:'flex',gap:8}}>
               <input className="input" placeholder="Add by email…" value={addEmail} onChange={e => setAddEmail(e.target.value)} style={{width:240}} />
               <button type="submit" className="btn btn-primary btn-sm">Add Friend</button>
@@ -83,13 +83,13 @@ export default function FriendsScreen() {
 
                   {isOnline && (
                     <div className="friend-watching">
-                      🎬 Watching: <strong>{watchingNow.title}</strong>
+                      Watching: <strong>{watchingNow.title}</strong>
                     </div>
                   )}
 
                   <div className="friend-actions">
                     <button className="btn btn-primary btn-sm" onClick={() => inviteToWatch(friend)}>
-                      🎬 Invite to Watch
+                      Invite to Watch
                     </button>
                     <button className="btn btn-ghost btn-sm">Message</button>
                   </div>
@@ -100,7 +100,6 @@ export default function FriendsScreen() {
 
           {filtered.length === 0 && (
             <div className="empty-state">
-              <div style={{fontSize:'3rem'}}>👥</div>
               <div>No friends found</div>
             </div>
           )}
@@ -127,9 +126,9 @@ export default function FriendsScreen() {
                   <button
                     className="btn btn-primary btn-sm"
                     onClick={() => {
-                      dispatch({ type: 'SET_TOAST', payload: { msg: `Friend request sent to ${person.name}! ✉️`, type: 'success' } });
+                      dispatch({ type: 'SET_TOAST', payload: { msg: `Friend request sent to ${person.name}!`, type: 'success' } });
                     }}
-                  >+ Add Friend</button>
+                  >Add Friend</button>
                 </div>
               </div>
             ))}
@@ -141,7 +140,6 @@ export default function FriendsScreen() {
         <div className="activity-list animate-fade">
           {activityFeed.length === 0 && (
             <div className="empty-state">
-              <div style={{fontSize:'3rem'}}>⚡</div>
               <div>Activity from your friends will appear here</div>
             </div>
           )}

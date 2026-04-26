@@ -223,41 +223,41 @@ export const SUBSCRIPTIONS = {
 };
 
 export const INITIAL_MESSAGES = [
-  { id: 'msg1', userId: 'u3', text: 'This movie is INSANE 🔥', timestamp: Date.now() - 120000 },
+  { id: 'msg1', userId: 'u3', text: 'This movie is incredible', timestamp: Date.now() - 120000 },
   { id: 'msg2', userId: 'u5', text: "I can't believe that last scene!", timestamp: Date.now() - 90000 },
   { id: 'msg3', userId: 'u1', text: 'The cinematography is stunning', timestamp: Date.now() - 60000 },
   { id: 'msg4', userId: 'u2', text: 'Anyone else think the director is genius?', timestamp: Date.now() - 45000 },
-  { id: 'msg5', userId: 'u4', text: '😭😭😭 that ending hit different', timestamp: Date.now() - 30000 },
+  { id: 'msg5', userId: 'u4', text: 'That ending was very moving', timestamp: Date.now() - 30000 },
 ];
 
 export const SIM_MESSAGES = [
-  "This scene is incredible! 🎬",
-  "Wait what just happened?? 😱",
-  "Called it from the beginning 😏",
-  "The soundtrack is everything ✨",
-  "Not crying, you are crying 😭",
-  "10/10 no notes",
-  "This is why Netflix is goated 🔥",
-  "Pause! Did anyone catch that easter egg?",
-  "The plot twist!! I cannot 🤯",
+  "This scene is incredible",
+  "Wait what just happened??",
+  "Called it from the beginning",
+  "The soundtrack is exceptional",
+  "That was very emotional",
+  "Excellent quality",
+  "This is why Netflix is the standard",
+  "Pause! Did anyone catch that detail?",
+  "The plot twist was unexpected",
   "Rewatching this immediately after",
   "The acting is on another level",
-  "Director really said no mercy 💀",
+  "Director really delivered here",
   "Stream is perfect, no lag at all",
-  "YOOO the visuals 👀",
-  "First time watching, already obsessed",
+  "The visuals are stunning",
+  "First time watching, already impressed",
 ];
 
 export const EMOJIS = ['❤️', '😂', '😮', '😭', '🔥', '👏', '🤯', '💀', '✨', '👀', '🎬', '⭐'];
 export const REACTIONS = ['❤️', '😂', '😮', '😭', '🔥', '👏', '🤯'];
 
 export const AI_INSIGHTS = [
-  { type: 'engagement', text: 'Engagement spiking! 3x normal activity in this room.', icon: '📈' },
-  { type: 'trending', text: 'This content is trending among your friends.', icon: '🔥' },
-  { type: 'retention', text: 'High retention probability - 92% watch completion predicted.', icon: '🎯' },
-  { type: 'community', text: 'Peak watch party hours for this title: 8-10 PM.', icon: '⏰' },
-  { type: 'prediction', text: 'Expected engagement spike in the next 8 minutes.', icon: '🔮' },
-  { type: 'social', text: '4 of your friends watched this in the last 24 hours.', icon: '👥' },
-  { type: 'milestone', text: 'This room is in the top 1% most active globally.', icon: '🏆' },
-  { type: 'mood', text: 'Mood analysis: Room energy is HIGH. Reactions surging.', icon: '⚡' },
+  { type: 'engagement', text: 'Engagement spiking! 3x normal activity in this room.', icon: 'TREND' },
+  { type: 'trending', text: 'This content is trending among your friends.', icon: 'HOT' },
+  { type: 'retention', text: 'High retention probability - 92% watch completion predicted.', icon: 'AIM' },
+  { type: 'community', text: 'Peak watch party hours for this title: 8-10 PM.', icon: 'TIME' },
+  { type: 'prediction', text: 'Expected engagement spike in the next 8 minutes.', icon: 'NEXT' },
+  { type: 'social', text: '4 of your friends watched this in the last 24 hours.', icon: 'SOCIAL' },
+  { type: 'milestone', text: 'This room is in the top 1% most active globally.', icon: 'RANK' },
+  { type: 'mood', text: 'Mood analysis: Room energy is HIGH. Reactions surging.', icon: 'LIVE' },
 ];

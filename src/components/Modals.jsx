@@ -19,7 +19,6 @@ export function PaywallModal() {
   return (
     <div className="overlay" onClick={() => dispatch({ type: 'HIDE_PAYWALL' })}>
       <div className="modal paywall-modal animate-scale" onClick={e => e.stopPropagation()}>
-        <div className="paywall-icon">🔒</div>
         <h2 className="paywall-title">Upgrade Required</h2>
         <p className="paywall-feature">
           <strong>{paywallFeature}</strong> requires a higher plan.
@@ -106,7 +105,7 @@ export function CreateRoomModal() {
   return (
     <div className="overlay" onClick={() => dispatch({ type: 'SET_CREATE_ROOM', payload: false })}>
       <div className="modal animate-scale" onClick={e => e.stopPropagation()}>
-        <h2 className="modal-title">🎬 Create Watch Party</h2>
+        <h2 className="modal-title">Create Watch Party</h2>
         <form onSubmit={createRoom} className="modal-form">
           <div className="form-group">
             <label className="form-label">Room Name</label>
@@ -152,12 +151,12 @@ export function CreateRoomModal() {
             </div>
           </div>
           <div className="room-link-preview">
-            <span className="link-label">🔗 Room Link</span>
+            <span className="link-label">Room Link</span>
             <code className="link-code">netflix.com/connect/room/{`${Date.now()}`.slice(-6)}</code>
           </div>
           <div className="modal-actions">
             <button type="submit" className="btn btn-primary btn-lg" disabled={creating}>
-              {creating ? <><span className="animate-spin">⟳</span> Creating…</> : '🎬 Start Watch Party'}
+              {creating ? <><span className="animate-spin">REF</span> Creating…</> : 'Start Watch Party'}
             </button>
             <button type="button" className="btn btn-ghost" onClick={() => dispatch({ type: 'SET_CREATE_ROOM', payload: false })}>
               Cancel
@@ -219,7 +218,7 @@ export function JoinRoomModal() {
               className="btn btn-primary btn-xl w-full"
               onClick={() => dispatch({ type: 'JOIN_ROOM', payload: room })}
             >
-              👥 Join Watch Party
+              Join Watch Party
             </button>
             <button className="btn btn-ghost" onClick={() => dispatch({ type: 'SET_JOIN_MODAL', payload: null })}>
               Cancel
@@ -254,7 +253,7 @@ export function InviteModal() {
   return (
     <div className="overlay" onClick={() => dispatch({ type: 'SET_INVITE_MODAL', payload: false })}>
       <div className="modal animate-scale" onClick={e => e.stopPropagation()}>
-        <h2 className="modal-title">➕ Invite Friends</h2>
+        <h2 className="modal-title">Invite Friends</h2>
         <div className="invite-link-box">
           <code className="link-code" style={{flex:1}}>{shareLink}</code>
           <button className="btn btn-primary btn-sm" onClick={copyLink}>Copy</button>
