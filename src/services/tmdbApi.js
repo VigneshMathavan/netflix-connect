@@ -36,10 +36,29 @@ function normalizeMovie(item, index) {
   };
 }
 
+const TMDB_ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
+
 async function fetchTMDB(endpoint, params = {}) {
-  const qs = new URLSearchParams({ api_key: TMDB_API_KEY, language: 'en-US', ...params }).toString();
-  const res = await fetch(`${BASE_URL}${endpoint}?${qs}`);
-  if (!res.ok) throw new Error(`TMDB ${res.status}`);
+  const qs = new URLSearchParams({ 
+    language: 'en-US', 
+    ...params,
+    // Add api_key only if no access token is provided (fallback)
+    ...(TMDB_ACCESS_TOKEN ? {} : { api_key: TMDB_API_KEY })
+  }).toString();
+
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+
+  if (TMDB_ACCESS_TOKEN) {
+    headers['Authorization'] = `Bearer ${TMDB_ACCESS_TOKEN}`;
+  }
+
+  const res = await fetch(`${BASE_URL}${endpoint}?${qs}`, { headers });
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(`TMDB ${res.status}: ${errData.status_message || 'Unauthorized'}`);
+  }
   return res.json();
 }
 
