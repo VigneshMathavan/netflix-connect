@@ -1,0 +1,143 @@
+.dashboard-container {
+  min-height: 100vh;
+  padding: 80px 40px 60px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.db-header { margin-bottom: 36px; }
+.db-title { font-size: 2rem; font-weight: 900; display: inline; }
+
+/* Metrics */
+.db-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.db-metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.4s ease;
+}
+.db-metric-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.db-metric-icon { font-size: 2rem; margin-bottom: 10px; }
+.db-metric-value { font-size: 2.2rem; font-weight: 900; margin-bottom: 4px; transition: all 0.5s ease; }
+.db-metric-label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.db-metric-delta { font-size: 0.78rem; font-weight: 700; }
+
+/* Body Grid */
+.db-body {
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  gap: 20px;
+}
+
+.db-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* Insights Panel */
+.db-insights-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.insight-card.highlight {
+  background: linear-gradient(135deg, rgba(147,51,234,0.1), rgba(29,185,84,0.08));
+  border: 1px solid rgba(147,51,234,0.2);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.insight-main-icon { font-size: 2.5rem; margin-bottom: 10px; }
+.insight-main-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
+
+.prediction-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  background: var(--surface2);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+}
+.pred-icon { font-size: 1.1rem; flex-shrink: 0; }
+.pred-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+
+/* Top Rooms */
+.db-top-rooms {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.db-room-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s ease;
+}
+.db-room-row:last-child { border-bottom: none; }
+.db-room-row:hover { background: var(--glass); margin: 0 -8px; padding: 12px 8px; border-radius: var(--radius); }
+.db-room-rank { font-size: 1.2rem; font-weight: 900; color: var(--text-dim); width: 28px; flex-shrink: 0; }
+.db-room-info { flex: 1; min-width: 0; }
+.db-room-name { font-weight: 700; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.db-room-movie { font-size: 0.72rem; color: var(--text-muted); }
+.db-room-stats { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+.db-room-stat { font-size: 0.75rem; color: var(--text-muted); }
+
+/* Creator Stats */
+.db-creator-stats {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.creator-live-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.creator-live-card {
+  background: var(--surface2);
+  border-radius: var(--radius);
+  padding: 12px 8px;
+  text-align: center;
+}
+.clc-icon { font-size: 1.3rem; margin-bottom: 4px; }
+.clc-val { font-size: 1.1rem; font-weight: 800; }
+.clc-label { font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+/* Event Log */
+.event-log { display: flex; flex-direction: column; gap: 6px; }
+.event-log-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--surface2);
+  border-radius: var(--radius);
+  font-size: 0.78rem;
+}
+.event-time { color: var(--text-dim); font-size: 0.68rem; width: 28px; flex-shrink: 0; }
+.event-icon { flex-shrink: 0; }
+.event-msg { color: var(--text-muted); line-height: 1.3; }
+
+@media (max-width: 1100px) {
+  .db-metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .db-body { grid-template-columns: 1fr; }
+}

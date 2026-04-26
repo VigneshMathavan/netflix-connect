@@ -1,0 +1,368 @@
+.home-container {
+  min-height: 100vh;
+  padding-top: 64px;
+}
+
+/* ---- Hero ---- */
+.hero-section {
+  position: relative;
+  height: 75vh;
+  min-height: 480px;
+  background-image: var(--backdrop);
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  align-items: flex-end;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(11,11,11,1) 0%,
+    rgba(11,11,11,0.85) 30%,
+    rgba(11,11,11,0.4) 60%,
+    rgba(11,11,11,0.1) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 40px;
+  max-width: 680px;
+}
+.hero-tags { display: flex; gap: 8px; margin-bottom: 16px; }
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+}
+.hero-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  max-width: 560px;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+}
+.meta-dot { color: var(--text-dim); }
+.maturity {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--text-muted);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.hero-room-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ---- AI Insight Banner ---- */
+.insight-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(147,51,234,0.1), rgba(29,185,84,0.08));
+  border: 1px solid rgba(147,51,234,0.2);
+  border-radius: 0;
+  padding: 12px 40px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.insight-icon { font-size: 1.2rem; }
+.insight-text { flex: 1; }
+
+/* ---- Home Main Layout ---- */
+.home-main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  padding: 32px 40px;
+}
+
+/* ---- Content Rows ---- */
+.content-row { margin-bottom: 40px; }
+.row-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.movie-strip {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+}
+
+.movie-card {
+  flex-shrink: 0;
+  width: 200px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  overflow: visible;
+  transition: transform 0.25s ease;
+}
+.movie-card:hover { transform: scale(1.05); z-index: 10; }
+
+.movie-thumb-wrap {
+  position: relative;
+  width: 200px;
+  height: 112px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.movie-thumb {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: filter 0.2s ease;
+}
+.movie-card:hover .movie-thumb { filter: brightness(0.6); }
+
+.movie-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.movie-card:hover .movie-thumb-overlay { opacity: 1; }
+
+.movie-play-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+.movie-play-btn:hover { transform: scale(1.1); }
+
+.movie-party-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+.movie-party-btn:hover { transform: scale(1.1); background: rgba(255,255,255,0.25); }
+
+/* ---- Friend social badge (replaces "X rooms") ---- */
+.friend-social-label {
+  position: absolute;
+  bottom: 6px; left: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 3px 8px;
+  font-size: 0.67rem;
+  font-weight: 600;
+}
+.friend-social-label.watching {
+  background: rgba(0, 0, 0, 0.75);
+  color: #1db954;
+}
+.friend-social-label.watched {
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--text-muted);
+}
+
+.movie-info { padding: 8px 2px 0; }
+.movie-title-sm { font-size: 0.82rem; font-weight: 600; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.movie-meta-sm { display: flex; gap: 8px; font-size: 0.72rem; color: var(--text-muted); }
+
+/* ---- Rooms Grid ---- */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.room-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.room-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(229,9,20,0.15); }
+
+.room-card-thumb {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+.room-card-overlay {
+  position: absolute;
+  bottom: 8px; left: 8px;
+  display: flex;
+  gap: 6px;
+}
+.room-card-info { padding: 12px; }
+.room-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 2px; }
+.room-movie-name { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+.room-participants { display: flex; align-items: center; padding-left: 6px; }
+
+/* ---- Sidebar ---- */
+.home-sidebar { display: flex; flex-direction: column; gap: 16px; }
+.sidebar-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+.sidebar-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+.friend-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.friend-row:last-of-type { border-bottom: none; }
+.online-dot {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+}
+.friend-info { flex: 1; }
+.friend-name { font-size: 0.82rem; font-weight: 600; }
+.friend-status { font-size: 0.72rem; color: var(--text-muted); }
+
+.activity-feed { display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto; }
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.activity-text { flex: 1; font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+.activity-time { font-size: 0.68rem; color: var(--text-dim); white-space: nowrap; }
+.no-activity { font-size: 0.8rem; color: var(--text-dim); text-align: center; padding: 16px 0; }
+
+.mini-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.mini-stat { text-align: center; }
+.mini-val { font-size: 1.3rem; font-weight: 800; color: var(--text); }
+.mini-label { font-size: 0.68rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+@media (max-width: 900px) {
+  .home-main { grid-template-columns: 1fr; }
+  .hero-content { padding: 24px; }
+  .hero-section { height: 60vh; }
+}
+
+/* ---- Official Event Card ---- */
+.official-event-card {
+  border-color: rgba(245, 197, 24, 0.35) !important;
+}
+.official-event-card:hover {
+  border-color: #f5c518 !important;
+  box-shadow: 0 8px 32px rgba(245, 197, 24, 0.18) !important;
+}
+
+/* ---- Friends Watching Row ---- */
+.friends-watching-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.friend-watching-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.2s;
+}
+.friend-watching-card:hover { border-color: var(--primary); }
+
+/* ---- TMDB Loading ---- */
+.tmdb-loading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.loading-spinner {
+  width: 22px; height: 22px;
+  border: 2px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Invite CTA Sidebar Card ---- */
+.invite-cta-card {
+  text-align: center;
+  border: 1px dashed rgba(229,9,20,0.3);
+  background: rgba(229,9,20,0.04);
+}
+
+/* ---- Recent With Friends ---- */
+.recent-with-friends-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---- Empty row placeholder ---- */
+.empty-row {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  padding: 16px 0;
+}
+

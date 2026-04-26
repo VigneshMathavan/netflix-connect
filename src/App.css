@@ -1,0 +1,19 @@
+.app {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.main-content {
+  min-height: calc(100vh - 64px);
+}
+
+/* Toast variants */
+.toast-success { border-color: rgba(29,185,84,0.4); }
+.toast-error   { border-color: rgba(229,9,20,0.4); }
+.toast-info    { border-color: rgba(66,133,244,0.4); }
+.toast-warning { border-color: rgba(245,197,24,0.4); }
+
+/* App-wide transitions */
+.main-content > * {
+  animation: fadeIn 0.35s ease;
+}
