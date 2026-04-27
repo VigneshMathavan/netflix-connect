@@ -2,7 +2,7 @@
 //  TMDB API SERVICE
 // =============================================
 
-const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY || '4f4bf3e4f8ea92ce4b540f8ee8ad2bae'; // Fallback to demo key if not set
+const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY || '8ec9be4bf8ea76d97fca457d79978c80'; // Updated to working fallback key
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_BASE = 'https://image.tmdb.org/t/p/w500';
 const BACKDROP_BASE = 'https://image.tmdb.org/t/p/w1280';
@@ -26,11 +26,10 @@ function normalizeMovie(item, index) {
     thumbnail: poster,
     backdrop,
     description: item.overview || '',
-    genre: [],          // filled later if needed
+    genre: [],          
     duration: isTV ? 'TV Series' : 'Feature Film',
     maturity: 'TV-MA',
     isTV,
-    // friend social overlay (simulated)
     friendsWatched: Math.floor(Math.random() * 6),
     friendWatchingNow: Math.random() > 0.6 ? null : ['Jamie', 'Sam', 'Priya', 'Jordan'][Math.floor(Math.random() * 4)],
   };
@@ -39,22 +38,16 @@ function normalizeMovie(item, index) {
 const TMDB_ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 
 async function fetchTMDB(endpoint, params = {}) {
+  // Always include api_key as it is more reliable
   const qs = new URLSearchParams({ 
+    api_key: TMDB_API_KEY,
     language: 'en-US', 
     ...params,
-    // Add api_key only if no access token is provided (fallback)
-    ...(TMDB_ACCESS_TOKEN ? {} : { api_key: TMDB_API_KEY })
   }).toString();
 
-  const headers = {
-    'Content-Type': 'application/json'
-  };
-
-  if (TMDB_ACCESS_TOKEN) {
-    headers['Authorization'] = `Bearer ${TMDB_ACCESS_TOKEN}`;
-  }
-
-  const res = await fetch(`${BASE_URL}${endpoint}?${qs}`, { headers });
+  // Removed Authorization header and Content-Type as they often cause 401/CORS issues with TMDB
+  const res = await fetch(`${BASE_URL}${endpoint}?${qs}`);
+  
   if (!res.ok) {
     const errData = await res.json().catch(() => ({}));
     throw new Error(`TMDB ${res.status}: ${errData.status_message || 'Unauthorized'}`);
